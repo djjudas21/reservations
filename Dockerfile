@@ -14,6 +14,9 @@ WORKDIR reservations-${version}
 # Use production database settings
 RUN cp config/database.yml.example.production config/database.yml
 
+# Facilitate disk-based logging
+RUN mkdir log && touch production.log
+
 RUN gem update --system \
 	&& gem install bundler -v 2.0
 
