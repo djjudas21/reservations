@@ -16,6 +16,6 @@ RUN gem update --system \
 
 RUN bundle install
 
-ADD entrypoint.sh entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-CMD ['./entrypoint.sh']
+ENTRYPOINT ["/entrypoint.sh"]
