@@ -11,10 +11,15 @@ RUN wget https://github.com/YaleSTC/reservations/archive/v${version}.tar.gz \
 
 WORKDIR reservations-${version}
 
+# Use production database settings
+RUN cp config/database.yml.example.production config/database.yml
+
 RUN gem update --system \
 	&& gem install bundler -v 2.0
 
 RUN bundle install
+
+ENV RAILS_ENV=production
 
 COPY entrypoint.sh /entrypoint.sh
 
