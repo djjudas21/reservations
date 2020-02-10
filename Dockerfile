@@ -24,8 +24,9 @@ RUN mv reservations-${version} reservations
 # Change into untarred source
 WORKDIR reservations
 
-# Use production database settings
+# Use production settings
 RUN cp config/database.yml.example.production config/database.yml
+RUN cp config/secrets.yml.example config/secrets.yml
 
 # Facilitate disk-based logging
 RUN mkdir log
